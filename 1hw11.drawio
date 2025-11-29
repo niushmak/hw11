@@ -1,0 +1,110 @@
+<mxfile host="65bd71144e">
+    <diagram id="classDiagram" name="Class Diagram">
+        <mxGraphModel dx="2134" dy="2226" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="u1" value="&lt;&lt;abstract&gt;&gt;&lt;br/&gt;User&lt;br/&gt;&lt;i&gt;- Id: Guid&lt;/i&gt;&lt;br/&gt;- Name: string&lt;br/&gt;- Email: string&lt;br/&gt;- Address: string&lt;br/&gt;- Phone: string&lt;br/&gt;- Role: string&lt;br/&gt;&lt;br/&gt;+ register(): void&lt;br/&gt;+ login(): bool&lt;br/&gt;+ updateData(): void" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f8ff;strokeColor=#2a3f54;" parent="1" vertex="1">
+                    <mxGeometry x="-110" y="-200" width="220" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="c1" value="Client&lt;br/&gt;- Loyalty: LoyaltyAccount&lt;br/&gt;+ addToCart(p, qty)&lt;br/&gt;+ placeOrder(cart, pm)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#2a7f62;" parent="1" vertex="1">
+                    <mxGeometry x="160" y="-50" width="220" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="a1" value="Administrator&lt;br/&gt;+ logAction(action)&lt;br/&gt;+ manageProduct(p)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#7f2a2a;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="160" width="220" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge_u_c" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=none;html=1;strokeColor=#2a3f54;" parent="1" source="u1" target="c1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge_u_a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=none;html=1;strokeColor=#2a3f54;" parent="1" source="u1" target="a1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="p1" value="Product&lt;br/&gt;- Id: Guid&lt;br/&gt;- Name: string&lt;br/&gt;- Description: string&lt;br/&gt;- Price: decimal&lt;br/&gt;- StockQuantity: int&lt;br/&gt;- Category: Category&lt;br/&gt;+ create()&lt;br/&gt;+ update()&lt;br/&gt;+ delete()&lt;br/&gt;+ applyDiscount(percent)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffaf0;strokeColor=#2a5f9e;" parent="1" vertex="1">
+                    <mxGeometry x="-380" y="190" width="300" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="cat1" value="Category&lt;br/&gt;- Id: Guid&lt;br/&gt;- Name: string&lt;br/&gt;+ addProduct(p)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9e5f2a;" parent="1" vertex="1">
+                    <mxGeometry x="530" y="230" width="200" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="o1" value="Order&lt;br/&gt;- Id: Guid&lt;br/&gt;- CreatedAt: DateTime&lt;br/&gt;- Status: OrderStatus&lt;br/&gt;- Client: Client&lt;br/&gt;- Items: List&lt;&lt;OrderItem&gt;&gt;&lt;br/&gt;- TotalAmount: decimal&lt;br/&gt;+ placeOrder()&lt;br/&gt;+ cancel()&lt;br/&gt;+ pay(p)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fff0;strokeColor=#2a9e4a;" parent="1" vertex="1">
+                    <mxGeometry x="-90" y="500" width="320" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="oi1" value="OrderItem&lt;br/&gt;- Product: Product&lt;br/&gt;- Quantity: int&lt;br/&gt;- LineTotal: decimal" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#575757;" parent="1" vertex="1">
+                    <mxGeometry x="380" y="440" width="220" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="cart" value="Cart&lt;br/&gt;- Owner: Client&lt;br/&gt;- Items: List&lt;&lt;CartItem&gt;&gt;&lt;br/&gt;- Subtotal: decimal&lt;br/&gt;+ add(p, qty)&lt;br/&gt;+ remove(p)&lt;br/&gt;+ applyPromo(code)&lt;br/&gt;+ calculateTotal()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff0f5;strokeColor=#7f2a9e;" parent="1" vertex="1">
+                    <mxGeometry x="610" y="-240" width="320" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="cartitem" value="CartItem&lt;br/&gt;- Product: Product&lt;br/&gt;- Quantity: int" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#444444;" parent="1" vertex="1">
+                    <mxGeometry x="940" y="-370" width="180" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="promo" value="PromoCode&lt;br/&gt;- Code: string&lt;br/&gt;- DiscountPercent: decimal&lt;br/&gt;- Expiry: DateTime&lt;br/&gt;+ validate()&lt;br/&gt;+ apply(cart)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffe0;strokeColor=#9e9e2a;" parent="1" vertex="1">
+                    <mxGeometry x="460" y="30" width="260" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="pay" value="Payment&lt;br/&gt;- Id: Guid&lt;br/&gt;- Type: string&lt;br/&gt;- Amount: decimal&lt;br/&gt;- Status: PaymentStatus&lt;br/&gt;- Date: DateTime&lt;br/&gt;+ process()&lt;br/&gt;+ refund()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f8ff;strokeColor=#2a5f9e;" parent="1" vertex="1">
+                    <mxGeometry x="620" y="440" width="300" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="del" value="Delivery&lt;br/&gt;- Id: Guid&lt;br/&gt;- Address: string&lt;br/&gt;- Status: DeliveryStatus&lt;br/&gt;- AssignedCourier: Courier&lt;br/&gt;+ send()&lt;br/&gt;+ track()&lt;br/&gt;+ complete()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffaf0;strokeColor=#9e5f2a;" parent="1" vertex="1">
+                    <mxGeometry x="90" y="850" width="300" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="cour" value="Courier&lt;br/&gt;- Id: Guid&lt;br/&gt;- Name: string&lt;br/&gt;- Phone: string&lt;br/&gt;+ assign(order)&lt;br/&gt;+ updateStatus(status)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#5f2a9e;" parent="1" vertex="1">
+                    <mxGeometry x="480" y="640" width="240" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="wh" value="Warehouse&lt;br/&gt;- Id: Guid&lt;br/&gt;- Location: string&lt;br/&gt;- Inventory: List&lt;&lt;InventoryItem&gt;&gt;&lt;br/&gt;+ reserve(p, qty)&lt;br/&gt;+ release(p, qty)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5fffa;strokeColor=#2a7f62;" parent="1" vertex="1">
+                    <mxGeometry x="960" y="320" width="300" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="inv" value="InventoryItem&lt;br/&gt;- Product: Product&lt;br/&gt;- Warehouse: Warehouse&lt;br/&gt;- QuantityAvailable: int" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#444444;" parent="1" vertex="1">
+                    <mxGeometry x="800" y="710" width="300" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="rev" value="Review&lt;br/&gt;- Id: Guid&lt;br/&gt;- Author: Client&lt;br/&gt;- Product: Product&lt;br/&gt;- Rating: int&lt;br/&gt;- Comment: string&lt;br/&gt;+ post()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff5ee;strokeColor=#9e5f2a;" parent="1" vertex="1">
+                    <mxGeometry x="1120" y="150" width="260" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="loy" value="LoyaltyAccount&lt;br/&gt;- Points: int&lt;br/&gt;+ addPoints(pts)&lt;br/&gt;+ redeemPoints(pts)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0fff0;strokeColor=#2a9e4a;" parent="1" vertex="1">
+                    <mxGeometry x="1130" y="-40" width="220" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=1;entryX=0.2;entryY=0;strokeColor=#000000;endArrow=none;" parent="1" source="c1" target="o1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;entryX=0.3;entryY=0;exitX=0.8;exitY=0.5;strokeColor=#000000;endArrow=none;" parent="1" source="o1" target="oi1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;entryX=0.5;entryY=0;strokeColor=#000000;endArrow=none;" parent="1" source="oi1" target="p1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;entryX=0.2;entryY=1;exitX=0.5;exitY=0;strokeColor=#000000;endArrow=none;" parent="1" source="p1" target="cat1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;entryX=0.5;entryY=1;exitX=0.5;exitY=0;strokeColor=#000000;endArrow=none;" parent="1" source="cart" target="cartitem" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;entryX=0.2;entryY=1;strokeColor=#000000;endArrow=none;" parent="1" source="cart" target="promo" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;entryX=0.5;entryY=1;strokeColor=#000000;endArrow=none;" parent="1" source="o1" target="del" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;entryX=0.5;entryY=1;strokeColor=#000000;endArrow=none;" parent="1" source="del" target="cour" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;entryX=0.5;entryY=0;strokeColor=#000000;endArrow=none;" parent="1" source="p1" target="inv" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="950" y="380"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;entryX=0.5;entryY=0;strokeColor=#000000;endArrow=none;" parent="1" source="inv" target="wh" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;endArrow=none;" parent="1" source="c1" target="loy" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;entryX=0.5;entryY=0;strokeColor=#000000;endArrow=none;" parent="1" source="p1" target="rev" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" style="edgeStyle=none;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.705;entryY=0.995;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="wh" target="wh">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
